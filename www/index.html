@@ -45,6 +45,9 @@
 <body>
     <div class="app">
         <h1>PhoneGap</h1>
+		<button onclick="clicked1()">Click Me1 </button>
+		<button onclick="clicked2()">Click Me2 </button>
+		<button onclick="clicked3()">Click Me3 </button>
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
@@ -54,8 +57,23 @@
     <script type="text/javascript" src="js/index.js"></script>
 	 <script type="text/javascript">
 	 //window.location='https://v3.konnektive.com';
-	 var ref = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=no');
+	 //var ref = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=no');
 	 //window.open('https://v3.konnektive.com','_blank','location=no');
+	 function clicked1()
+	 { 
+	  var ref = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=no');
+	 }
+	 function clicked2()
+	 { 
+	  window.location='https://v3.konnektive.com';
+	 }
+	 function clicked3()
+	 { 
+	  window.open('https://v3.konnektive.com','_blank','location=no');
+	 }
+	 
+	 
+	 
 	 </script>
 	 
     <script type="text/javascript">
