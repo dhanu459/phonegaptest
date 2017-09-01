@@ -38,6 +38,7 @@
 		<button onclick="clicked1()">Click Me1 </button>
 		<button onclick="clicked2()">Click Me2 </button>
 		<button onclick="clicked3()">Click Me3 </button>
+		<a href="https://v3.konnektive.com">
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received">Device is Ready</p>
@@ -58,6 +59,18 @@
 	 handleExternalURLs();
 	}
 	
+	 function openInWebView(url)
+    {
+        var anchor = document.createElement('a');
+        anchor.setAttribute('href', url);
+        //anchor.setAttribute('target', '_self');
+        
+        var dispatch = document.createEvent('HTMLEvents')
+        dispatch.initEvent('click', true, true);
+        
+        anchor.dispatchEvent(dispatch);
+    
+	
 	function handleExternalURLs() {
 		// Handle click events for all external URLs
 		if (device.platform.toUpperCase() === 'ANDROID') {
@@ -65,7 +78,8 @@
 		}
 		else if (device.platform.toUpperCase() === 'IOS') {
 			  //var ref = cordova.InAppBrowser.open('https://v3.konnektive.com', '_blank', 'location=no');
-			   window.location='https://v3.konnektive.com';
+			  openInWebView('https://v3.konnektive.com');
+			   //window.location='https://v3.konnektive.com';
 				//window.open('https://v3.konnektive.com', '_system');
 		}
 		else {
