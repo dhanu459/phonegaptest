@@ -46,13 +46,30 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 	 <script type="text/javascript">
-	function init() { 
-	window.open('https://v3.konnektive.com','_blank','location=no');
-	//var ref = cordova.InAppBrowser.open('https://v3.konnektive.com', '_blank', 'location=no');
-		//document.addEventListener("deviceready", onDeviceReady, false);
+	function init() {
+		document.addEventListener("deviceready", onDeviceReady, false);
 	}
 	function onDeviceReady() {
-		//var ref = cordova.InAppBrowser.open('https://v3.konnektive.com', '_blank', 'location=no');
+		//var ref = cordova.InAppBrowser.open('https://v3.konnektive.com', '_blank', 'location=no,clearcache=yes');
+		if (!window.device) {
+        window.device = { platform: 'Browser' };
+		
+    }
+	 handleExternalURLs();
+	}
+	
+	function handleExternalURLs() {
+		// Handle click events for all external URLs
+		if (device.platform.toUpperCase() === 'ANDROID') {
+		    var ref = cordova.InAppBrowser.open('https://v3.konnektive.com', '_blank', 'location=no');
+		}
+		else if (device.platform.toUpperCase() === 'IOS') {
+			
+				window.open('https://v3.konnektive.com', '_system');
+		}
+		else {
+			// Leave standard behaviour
+		}
 	}
 	 
 	 //window.location='https://v3.konnektive.com';
