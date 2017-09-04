@@ -29,123 +29,27 @@
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>Hello World</title>
+    <title>KonnektiveCRM</title>
 </head>
 
-<body onload="clicked1()">
+<body onload="init()">
     <div class="app">
-        <h1>PhoneGap</h1>
-		<button onclick="clicked1()">Click Me1 </button>
-		<button onclick="clicked2()">Click Me2 </button>
-		<button onclick="clicked3()">Click Me3 </button>
-		<a href="https://v3.konnektive.com">
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-			<p id="err" name="err"> error desc</p>
+            <button onclick="onDeviceReady()">Please click here to Konnektive CRM</button>
         </div>
-    </div>
 	
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-	<script>
-	function clicked1()
-	 { 
-		try {
-		document.getElementById("err").innerHTML = 'click 1 started'
-	  var ref = cordova.InAppBrowser.open('https://v3.konnektive.com', '_blank', 'location=no');
-	  	document.getElementById("err").innerHTML = 'click 1 ended'
-			}
-		catch(err) {
-			document.getElementById("err").innerHTML = err.message;
-		}
-	 }
-	 function clicked2()
-	 { 
-	 	try {
-			document.getElementById("err").innerHTML = 'click 2 started'
-	  window.location='https://v3.konnektive.com';
-	  	  	document.getElementById("err").innerHTML = 'click 2 ended'
-	  	}
-		catch(err) {
-			document.getElementById("err").innerHTML = err.message;
-		}
-	 }
-	 function clicked3()
-	 { 
-	 try {
-	 document.getElementById("err").innerHTML = 'click 3 started'
-	  window.open('https://v3.konnektive.com','_blank','location=no');
-	  	 document.getElementById("err").innerHTML = 'click 3 ended'
-	  }
-	  		catch(err) {
-			document.getElementById("err").innerHTML = err.message;
-		}
-	 }
-	 
-	
-	</script>
-	
-	
-	
-	 <script>
-	function init() {
-		clicked2();
-		document.documentElement.innerHTML=document.documentElement.innerHTML;
-		document.addEventListener("deviceready", onDeviceReady, false);
-	}
-	function onDeviceReady() {
-		//var ref = cordova.InAppBrowser.open('https://v3.konnektive.com', '_blank', 'location=no,clearcache=yes');
-		if (!window.device) {
-        window.device = { platform: 'Browser' };
-		
-    }
-	 handleExternalURLs();
-	}
-	
-	 function openInWebView(url)
-    {
-        var anchor = document.createElement('a');
-        anchor.setAttribute('href', url);
-        //anchor.setAttribute('target', '_self');
-        
-        var dispatch = document.createEvent('HTMLEvents')
-        dispatch.initEvent('click', true, true);
-        
-        anchor.dispatchEvent(dispatch);
-    
-	
-	function handleExternalURLs() {
-		try{
-		// Handle click events for all external URLs
-		if (device.platform.toUpperCase() === 'ANDROID') {
-		    var ref = cordova.InAppBrowser.open('https://v3.konnektive.com', '_blank', 'location=no');
-		}
-		else if (device.platform.toUpperCase() === 'IOS') {
-			  //var ref = cordova.InAppBrowser.open('https://v3.konnektive.com', '_blank', 'location=no');
-			  //openInWebView('https://v3.konnektive.com');
-			   //window.location='https://v3.konnektive.com';
-				//window.open('https://v3.konnektive.com', '_system');
-				//document.documentElement.innerHTML=document.documentElement.innerHTML;
-				clicked2();
-		}
-		else {
-			// Leave standard behaviour
-		}
-		}
-		catch(err)
-		{
-		document.getElementById("err").innerHTML = 'error in load'
-		}
-	}
-	 
-	 //window.location='https://v3.konnektive.com';
-	 //var ref = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=no');
-	 //window.open('https://v3.konnektive.com','_blank','location=no');
-	 
-	 
-	 
-	 </script>
+	 <script typeof="text/javascript">
+            function init()
+            {
+                document.addEventListener("deviceready", onDeviceReady, false);
+            }
+
+            function onDeviceReady()
+            {
+                var ref = cordova.InAppBrowser.open('https://v3.konnektive.com', '_blank', 'location=no,fullscreen=yes')
+            }
+        </script>
 	 
     <script type="text/javascript">
         app.initialize();
